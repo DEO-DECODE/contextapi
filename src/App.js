@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from "react";
+import Counter from "./components/Counter";
+import { useContext } from "react";
+// Kisi v context ke value ko access krne ke liye hme , ek hook chahiye hota hai jisko hm useContext khte hain.
+import { CounterContext } from "./context/Counter";
+const App = () => {
+  const CounterState = useContext(CounterContext);
+  // Context ke ander jo state pari hai , usko read krke idhar le aaya hai.
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1> Count is {CounterState.count}</h1>
+      <Counter />
+      <Counter />
+      <Counter />
+      <Counter />
     </div>
   );
-}
+};
 
 export default App;
